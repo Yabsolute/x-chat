@@ -1,15 +1,42 @@
-import yayJpg from '../assets/yay.jpg';
+import React from 'react';
+import { UserOutlined } from '@ant-design/icons';
+import { Flex } from 'antd';
+import { Bubble } from '@ant-design/x';
 
-export default function HomePage() {
-  return (
-    <div>
-      <h2>Yay! Welcome to umi!</h2>
-      <p>
-        <img src={yayJpg} width="388" />
-      </p>
-      <p>
-        To get started, edit <code>pages/index.tsx</code> and save to reload.
-      </p>
-    </div>
-  );
-}
+const fooAvatar: React.CSSProperties = {
+  color: '#f56a00',
+  backgroundColor: '#fde3cf',
+};
+
+const barAvatar: React.CSSProperties = {
+  color: '#fff',
+  backgroundColor: '#87d068',
+};
+
+const hideAvatar: React.CSSProperties = {
+  visibility: 'hidden',
+};
+
+const App: React.FC = () => (
+  <Flex gap="middle" vertical>
+    <Bubble
+      placement="start"
+      content="Good morning, how are you?"
+      avatar={{ icon: <UserOutlined />, style: fooAvatar }}
+    />
+    <Bubble
+      placement="start"
+      content="What a beautiful day!"
+      styles={{ avatar: hideAvatar }}
+      avatar={{}}
+    />
+    <Bubble
+      placement="end"
+      content="Hi, good morning, I'm fine!"
+      avatar={{ icon: <UserOutlined />, style: barAvatar }}
+    />
+    <Bubble placement="end" content="Thank you!" styles={{ avatar: hideAvatar }} avatar={{}} />
+  </Flex>
+);
+
+export default App;
